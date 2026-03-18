@@ -24,3 +24,7 @@ scheletro/user-service/obj/Debug/net10.0/UserService.AssemblyInfo.cs
 scheletro/user-service/obj/Debug/net10.0/UserService.AssemblyInfoInputs.cache
 scheletro/user-service/obj/Debug/net10.0/UserService.csproj.AssemblyReference.cache
 scheletro/user-service/obj/Debug/net10.0/UserService.csproj.AssemblyReference.cache
+scheletro/billing-service/obj/BillingService.csproj.nuget.g.props
+scheletro/billing-service/obj/Debug/net10.0/BillingService.AssemblyInfo.cs
+scheletro/billing-service/obj/Debug/net10.0/BillingService.AssemblyInfoInputs.cache
+scheletro/billing-service/obj/Debug/net10.0/BillingService.csproj.AssemblyReference.cache
