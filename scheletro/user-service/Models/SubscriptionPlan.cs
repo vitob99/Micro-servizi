@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using UserService.Models;
 
+namespace UserService.Models;
+[Table("subscription_plans")]
 public class SubscriptionPlan
 {
     [Key]
