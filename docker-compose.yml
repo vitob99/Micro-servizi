@@ -47,35 +47,35 @@ services:
     networks:
       - backend
 
-  # billing-service:
-  #   build: ./scheletro/billing-service
-  #   container_name: billing-service
-  #   environment:
-  #     - ASPNETCORE_URLS=http://+:80
-  #     - ConnectionStrings__Default=server=billing-db;port=3306;database=billingdb;user=root;password=root
-  #     - UserServiceUrl=http://user-service
-  #   depends_on:
-  #     - billing-db
-  #     - user-service
-  #   ports:
-  #     - "8081:80"
-  #   networks:
-  #     - backend
+  billing-service:
+    build: ./scheletro/billing-service
+    container_name: billing-service
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__Default=server=billing-db;port=3306;database=billingdb;user=root;password=root
+      - UserServiceUrl=http://user-service
+    depends_on:
+      - billing-db
+      - user-service
+    ports:
+      - "8081:80"
+    networks:
+      - backend
 
-  # deploy-service:
-  #   build: ./scheletro/deploy-service
-  #   container_name: deploy-service
-  #   environment:
-  #     - ASPNETCORE_URLS=http://+:80
-  #     - ConnectionStrings__Default=server=deploy-db;port=3306;database=deploydb;user=root;password=root
-  #     - BillingServiceUrl=http://billing-service
-  #   depends_on:
-  #     - deploy-db
-  #     - billing-service
-  #   ports:
-  #     - "8082:80"
-  #   networks:
-  #     - backend
+  deploy-service:
+    build: ./scheletro/deploy-service
+    container_name: deploy-service
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__Default=server=deploy-db;port=3306;database=deploydb;user=root;password=root
+      - BillingServiceUrl=http://billing-service
+    depends_on:
+      - deploy-db
+      - billing-service
+    ports:
+      - "8082:80"
+    networks:
+      - backend
 
 networks:
   backend:
