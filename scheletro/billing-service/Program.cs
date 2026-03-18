@@ -4,13 +4,9 @@ using BillingService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("Default")
-                      ?? builder.Configuration["ConnectionStrings__Default"];
+var connectionString = builder.Configuration.GetConnectionString("Default") ?? builder.Configuration["ConnectionStrings__Default"];
 
-builder.Services.AddDbContext<BillingDbContext>(options =>
-    options.UseMySql(
-        connectionString!,
-        new MySqlServerVersion(new Version(8, 0, 0))));
+builder.Services.AddDbContext<BillingDbContext>(options => options.UseMySql(connectionString!,ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddHttpClient<UserClient>((sp, client) =>
 {
@@ -21,7 +17,7 @@ builder.Services.AddHttpClient<UserClient>((sp, client) =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -32,13 +28,31 @@ var app = builder.Build();
 //     db.Database.Migrate();
 // }
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<BillingDbContext>();
+
+    try
+    {
+        db.Database.EnsureCreated();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Errore durante la migrazione: {ex.Message}");
+    }
+}
+
+
+
 /*
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 */
+app.UseSwagger();
+app.UseSwaggerUI();
+
+
 
 app.UseHttpsRedirection();
 

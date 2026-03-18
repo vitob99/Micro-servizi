@@ -11,7 +11,9 @@ public class BillingDbContext : DbContext
 
     public DbSet<Payment> Payments => Set<Payment>();
     public DbSet<CreditTransaction> CreditTransactions => Set<CreditTransaction>();
-
+    public DbSet<UsageRecord> UsageRecords => Set<UsageRecord>();
+    public DbSet<Invoice> Invoices => Set<Invoice>();
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
