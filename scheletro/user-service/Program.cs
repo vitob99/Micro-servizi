@@ -10,8 +10,8 @@ builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(connect
 
 
 //Ho commentato l'aggiunta dei controllers e degli endpoint delle api visto che non li utilizziamo al momento
-//builder.Services.AddControllers();
-//builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
@@ -36,15 +36,14 @@ using (var scope = app.Services.CreateScope())
 
 
 
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 
 app.UseHttpsRedirection();
 
-//app.MapControllers();
+app.MapControllers();
 
 app.Run();
