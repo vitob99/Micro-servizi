@@ -49,7 +49,21 @@ public class UsersController : ControllerBase
     [HttpPost("{id:int}/credits/add")]
     public async Task<ActionResult> AddCredits(int id, [FromBody] AddCreditsRequest request)
     {
-        throw new NotImplementedException("Da implementare come esercizio bonus: aggiornamento crediti");
+        var user = await _db.Users.FindAsync(id);
+
+        if (user == null)
+        {
+            return NotFound($"Utente con id: {id} non trovato!");
+        }
+
+        // Aggiungo i crediti
+        user.Credits += request.Delta;
+
+        // Salvo i cambiamenti nel db
+        await _db.SaveChangesAsync();
+
+        // Ritorno il success dell'id dello user e i crediti disponibili
+        return Ok(new { user.Id, user.Credits });
     }
 
     [HttpGet("{id:int}/registration")]
