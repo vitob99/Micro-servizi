@@ -37,3 +37,4 @@ C:\Users\rebox\Desktop\Micro-servizi\scheletro\user-service\obj\Debug\net10.0\re
 C:\Users\rebox\Desktop\Micro-servizi\scheletro\user-service\obj\Debug\net10.0\UserService.pdb
 C:\Users\rebox\Desktop\Micro-servizi\scheletro\user-service\obj\Debug\net10.0\UserService.genruntimeconfig.cache
 C:\Users\rebox\Desktop\Micro-servizi\scheletro\user-service\obj\Debug\net10.0\ref\UserService.dll
+C:\Users\rebox\Desktop\Micro-servizi\scheletro\user-service\obj\Debug\net10.0\UserService.sourcelink.json
