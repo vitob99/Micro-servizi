@@ -1,45 +1,51 @@
 using Microsoft.EntityFrameworkCore;
 using UserService.Data;
 
-// var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-// // DbContext EF Core per MySQL - gli studenti vedranno come è configurato
-// var connectionString = builder.Configuration.GetConnectionString("Default")
-//                       ?? builder.Configuration["ConnectionStrings__Default"];
+// DbContext EF Core per MySQL - gli studenti vedranno come è configurato
+var connectionString = builder.Configuration.GetConnectionString("Default") ?? builder.Configuration["ConnectionStrings__Default"];
 
-// builder.Services.AddDbContext<UserDbContext>(options =>
-//     options.UseMySql(
-//         connectionString!,
-//         new MySqlServerVersion(new Version(8, 0, 0))));
-
-// builder.Services.AddControllers();
-// builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
-
-// var app = builder.Build();
-
-// TODO: opzionale, far vedere agli studenti come usare le migrations
-// using (var scope = app.Services.CreateScope())
-// {
-//     var db = scope.ServiceProvider.GetRequiredService<UserDbContext>();
-//     db.Database.Migrate();
-// }
+builder.Services.AddDbContext<UserDbContext>(options => options.UseMySql(connectionString!, ServerVersion.AutoDetect(connectionString)));
 
 
+//Ho commentato l'aggiunta dei controllers e degli endpoint delle api visto che non li utilizziamo al momento
+//builder.Services.AddControllers();
+//builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// TODO: Creare connessione api per le comunicazioni tra i micro-servizi
+// // TODO: opzionale, far vedere agli studenti come usare le migrations
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Errore durante la migrazione: {ex.Message}");
+    }
+}
 
 
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
 
 
-// app.UseHttpsRedirection();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-// app.MapControllers();
 
-// app.Run();
+app.UseHttpsRedirection();
 
+//app.MapControllers();
 
-    Console.WriteLine("Prova");
+app.Run();
+
