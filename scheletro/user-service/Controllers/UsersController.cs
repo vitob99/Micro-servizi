@@ -26,7 +26,13 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<User>> CreateUser([FromBody] User user)
     {
-        throw new NotImplementedException("Da implementare come esercizio: creazione utente");
+        user.Credits = 0;
+
+        _db.Users.Add(user);
+
+        await _db.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
     }
 
     // TODO STUDENTE:
@@ -57,13 +63,34 @@ public class UsersController : ControllerBase
     [HttpPost("{id:int}/credits/add")]
     public async Task<ActionResult> AddCredits(int id, [FromBody] AddCreditsRequest request)
     {
-        throw new NotImplementedException("Da implementare come esercizio bonus: aggiornamento crediti");
+        var user = await _db.Users.FindAsync(id);
+
+        if (user == null)
+        {
+            return NotFound($"Utente con id: {id} non trovato!");
+        }
+
+        // Aggiungo i crediti
+        user.Credits += request.Delta;
+
+        // Salvo i cambiamenti nel db
+        await _db.SaveChangesAsync();
+
+        // Ritorno il success dell'id dello user e i crediti disponibili
+        return Ok(new { user.Id, user.Credits });
     }
 
     [HttpGet("{id:int}/registration")]
     public async Task<ActionResult<User>> GetRegistrationDate(int id)
     {
-        throw new NotImplementedException("Da implementare come esercizio: recupero data di registrazione da id utente");
+        User? user = _db.Users.FirstOrDefault(u => u.Id == id);  //cerco l'utente con id uguale al parametro
+
+        if (user == null)//se nullo...
+        {
+            return NotFound($"Utente con ID {id} non trovato.");  
+        }
+
+        return Ok(user.RegistrationDate); //se trovato...
     }
 }
 
