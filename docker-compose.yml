@@ -11,6 +11,12 @@ services:
       - "3307:3306"
     networks:
       - backend
+    
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   billing-db:
     image: mysql:8.0
@@ -22,6 +28,12 @@ services:
       - "3308:3306"
     networks:
       - backend
+   
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   deploy-db:
     image: mysql:8.0
@@ -33,6 +45,12 @@ services:
       - "3309:3306"
     networks:
       - backend
+ 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   user-service:
     build: ./scheletro/user-service
@@ -41,7 +59,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__Default=server=user-db;port=3306;database=userdb;user=root;password=root
     depends_on:
-      - user-db
+      user-db:
+        condition: service_healthy 
     ports:
       - "8080:80"
     networks:
@@ -55,8 +74,10 @@ services:
       - ConnectionStrings__Default=server=billing-db;port=3306;database=billingdb;user=root;password=root
       - UserServiceUrl=http://user-service
     depends_on:
-      - billing-db
-      - user-service
+      billing-db:
+        condition: service_healthy 
+      user-service:
+        condition: service_started
     ports:
       - "8081:80"
     networks:
@@ -70,8 +91,10 @@ services:
       - ConnectionStrings__Default=server=deploy-db;port=3306;database=deploydb;user=root;password=root
       - BillingServiceUrl=http://billing-service
     depends_on:
-      - deploy-db
-      - billing-service
+      deploy-db:
+        condition: service_healthy 
+      billing-service:
+        condition: service_started
     ports:
       - "8082:80"
     networks:
@@ -80,4 +103,3 @@ services:
 networks:
   backend:
     driver: bridge
-
