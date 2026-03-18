@@ -55,7 +55,14 @@ public class UsersController : ControllerBase
     [HttpGet("{id:int}/registration")]
     public async Task<ActionResult<User>> GetRegistrationDate(int id)
     {
-        throw new NotImplementedException("Da implementare come esercizio: recupero data di registrazione da id utente");
+        User? user = _db.Users.FirstOrDefault(u => u.Id == id);  //cerco l'utente con id uguale al parametro
+
+        if (user == null)//se nullo...
+        {
+            return NotFound($"Utente con ID {id} non trovato.");  
+        }
+
+        return Ok(user.RegistrationDate); //se trovato...
     }
 }
 
