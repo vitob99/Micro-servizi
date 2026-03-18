@@ -5,7 +5,7 @@ WORKDIR /src
 COPY . .
 
 # Pubblica l'applicazione in modalità Release
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish "UserService.csproj" -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app

@@ -43,7 +43,7 @@ public class User
     [Column("subscription_plan_id")]
     public int? SubscriptionPlanId { get; set; }
 
-    [ForeignKey("subscription_plan_id")]
+    [ForeignKey("SubscriptionPlanId")]
     public SubscriptionPlan? SubscriptionPlanForeignSet { get; set; }
 }
 

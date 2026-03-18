@@ -25,7 +25,7 @@ using (var scope = app.Services.CreateScope())
 
     try
     {
-        db.Database.Migrate();
+        db.Database.EnsureCreated();
     }
     catch (Exception ex)
     {
@@ -48,4 +48,3 @@ app.UseHttpsRedirection();
 //app.MapControllers();
 
 app.Run();
-
