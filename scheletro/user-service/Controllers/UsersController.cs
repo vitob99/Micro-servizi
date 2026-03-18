@@ -37,7 +37,15 @@ public class UsersController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<User>> GetUserById(int id)
     {
-        throw new NotImplementedException("Da implementare come esercizio: recupero utente per id");
+        var user = await _db.Users.FindAsync(id);
+
+        // Controlla se esiste
+        if (user == null)
+        {
+            return NotFound("Utente non trovato"); // restituisce 404 se non trovato
+        }
+
+        return Ok(user); // restituisce 200 con l'utente
     }
 
     // Endpoint opzionale che può essere utile nella soluzione
