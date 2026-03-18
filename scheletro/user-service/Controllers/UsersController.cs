@@ -51,6 +51,12 @@ public class UsersController : ControllerBase
     {
         throw new NotImplementedException("Da implementare come esercizio bonus: aggiornamento crediti");
     }
+
+    [HttpGet("{id:int}/registration")]
+    public async Task<ActionResult<User>> GetRegistrationDate(int id)
+    {
+        throw new NotImplementedException("Da implementare come esercizio: recupero data di registrazione da id utente");
+    }
 }
 
 public class AddCreditsRequest
