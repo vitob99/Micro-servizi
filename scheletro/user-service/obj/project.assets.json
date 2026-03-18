@@ -648,24 +648,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\decic\\.nuget\\packages\\": {}
+    "C:\\Users\\rebox\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\decic\\Documents\\GitHub\\Micro-servizi\\scheletro\\user-service\\UserService.csproj",
+      "projectUniqueName": "C:\\Users\\rebox\\Desktop\\Micro-servizi\\scheletro\\user-service\\UserService.csproj",
       "projectName": "UserService",
-      "projectPath": "C:\\Users\\decic\\Documents\\GitHub\\Micro-servizi\\scheletro\\user-service\\UserService.csproj",
-      "packagesPath": "C:\\Users\\decic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\decic\\Documents\\GitHub\\Micro-servizi\\scheletro\\user-service\\obj\\",
+      "projectPath": "C:\\Users\\rebox\\Desktop\\Micro-servizi\\scheletro\\user-service\\UserService.csproj",
+      "packagesPath": "C:\\Users\\rebox\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rebox\\Desktop\\Micro-servizi\\scheletro\\user-service\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\decic\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rebox\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -684,7 +692,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
@@ -722,7 +730,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

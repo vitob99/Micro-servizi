@@ -1,28 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "S1ZcP6oI9KI=",
+  "dgSpecHash": "z9/QWTWE75E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\decic\\Documents\\GitHub\\Micro-servizi\\scheletro\\billing-service\\BillingService.csproj",
+  "projectFilePath": "C:\\Users\\rebox\\Desktop\\Micro-servizi\\scheletro\\billing-service\\BillingService.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\decic\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
-    "C:\\Users\\decic\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0\\microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\decic\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0\\microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
-    "C:\\Users\\decic\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
-    "C:\\Users\\decic\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
-    "C:\\Users\\decic\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.0\\pomelo.entityframeworkcore.mysql.8.0.0.nupkg.sha512"
+    "C:\\Users\\rebox\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0\\microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0\\microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0\\microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.0\\pomelo.entityframeworkcore.mysql.8.0.0.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.5\\swashbuckle.aspnetcore.10.1.5.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.5\\swashbuckle.aspnetcore.swagger.10.1.5.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.5\\swashbuckle.aspnetcore.swaggergen.10.1.5.nupkg.sha512",
+    "C:\\Users\\rebox\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.5\\swashbuckle.aspnetcore.swaggerui.10.1.5.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "message": "BillingService depends on Pomelo.EntityFrameworkCore.MySql (>= 8.0.0-preview.4) but Pomelo.EntityFrameworkCore.MySql 8.0.0-preview.4 was not found. Pomelo.EntityFrameworkCore.MySql 8.0.0 was resolved instead.",
-      "projectPath": "C:\\Users\\decic\\Documents\\GitHub\\Micro-servizi\\scheletro\\billing-service\\BillingService.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\decic\\Documents\\GitHub\\Micro-servizi\\scheletro\\billing-service\\BillingService.csproj",
-      "libraryId": "Pomelo.EntityFrameworkCore.MySql",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    }
-  ]
+  "logs": []
 }
