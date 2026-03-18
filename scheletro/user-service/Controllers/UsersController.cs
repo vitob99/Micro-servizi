@@ -26,7 +26,13 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<User>> CreateUser([FromBody] User user)
     {
-        throw new NotImplementedException("Da implementare come esercizio: creazione utente");
+        user.Credits = 0;
+
+        _db.Users.Add(user);
+
+        await _db.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
     }
 
     // TODO STUDENTE:
