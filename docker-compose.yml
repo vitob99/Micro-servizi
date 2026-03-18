@@ -1,0 +1,83 @@
+version: "3.9"
+
+services:
+  user-db:
+    image: mysql:8.0
+    container_name: user-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: userdb
+    ports:
+      - "3307:3306"
+    networks:
+      - backend
+
+  billing-db:
+    image: mysql:8.0
+    container_name: billing-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: billingdb
+    ports:
+      - "3308:3306"
+    networks:
+      - backend
+
+  deploy-db:
+    image: mysql:8.0
+    container_name: deploy-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: deploydb
+    ports:
+      - "3309:3306"
+    networks:
+      - backend
+
+  user-service:
+    build: ./scheletro/user-service
+    container_name: user-service
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__Default=server=user-db;port=3306;database=userdb;user=root;password=root
+    depends_on:
+      - user-db
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+
+  billing-service:
+    build: ./scheletro/billing-service
+    container_name: billing-service
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__Default=server=billing-db;port=3306;database=billingdb;user=root;password=root
+      - UserServiceUrl=http://user-service
+    depends_on:
+      - billing-db
+      - user-service
+    ports:
+      - "8081:80"
+    networks:
+      - backend
+
+  deploy-service:
+    build: ./scheletro/deploy-service
+    container_name: deploy-service
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__Default=server=deploy-db;port=3306;database=deploydb;user=root;password=root
+      - BillingServiceUrl=http://billing-service
+    depends_on:
+      - deploy-db
+      - billing-service
+    ports:
+      - "8082:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
